@@ -4,6 +4,10 @@ from ats_score import calculate_ats_score, detect_sections, generate_feedback
 
 app = Flask(__name__)
 
+@app.route('/')
+def home():
+    return "JobFit Analyzer backend is running!"
+
 @app.route("/analyze", methods=["POST"])
 def analyze_resume():
     resume_file = request.files["resume"]
