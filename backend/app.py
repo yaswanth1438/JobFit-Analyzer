@@ -4,13 +4,14 @@ from parser import extract_text_docx, extract_text_pdf
 from ats_score import calculate_ats_score, detect_sections, generate_feedback
 
 app = Flask(__name__)
-CORS(app)  # allow all origins
-# OR restrict only to your Netlify site:
-# CORS(app, origins=["https://resume-analyzeer.netlify.app"])
+
+# Explicitly allow your Netlify domain
+CORS(app, resources={r"/*": {"origins": "https://resume-analyzeer.netlify.app"}})
 
 @app.route('/')
 def home():
     return "JobFit Analyzer backend is running!"
+
 
 @app.route("/analyze", methods=["POST"])
 def analyze_resume():
