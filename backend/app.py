@@ -1,8 +1,12 @@
+from flask_cors import CORS
 from flask import Flask, request, jsonify
 from parser import extract_text_docx, extract_text_pdf
 from ats_score import calculate_ats_score, detect_sections, generate_feedback
 
 app = Flask(__name__)
+CORS(app)  # allow all origins
+# OR restrict only to your Netlify site:
+# CORS(app, origins=["https://resume-analyzeer.netlify.app"])
 
 @app.route('/')
 def home():
