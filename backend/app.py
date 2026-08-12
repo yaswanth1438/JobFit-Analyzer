@@ -12,7 +12,6 @@ CORS(app, resources={r"/*": {"origins": "https://resume-analyzeer.netlify.app"}}
 def home():
     return "JobFit Analyzer backend is running!"
 
-
 @app.route("/analyze", methods=["POST"])
 def analyze_resume():
     resume_file = request.files["resume"]
